@@ -40,8 +40,6 @@ N = int(instr().strip())
 # even0[0] == evenOdd[0][0][0]
 
 evenOdd = [[[0 for _ in range(N+1)] for _ in range(2)] for _ in range(6 * N - 18)] 
-
-
 grid = [instr().strip() for _ in range(N)]
 
 lines_data: list[str] = []
@@ -84,10 +82,9 @@ for line in lines_data:
 
             if pal in occurances: occurances[pal] += 1
             else: occurances[pal] = 1
+
+            if occurances[pal] == 2:
+                print(pal)
+                break
     arrid += 1
 
-#print(occurances)
-for pal, count in occurances.items():
-    if count == 2:
-        print(pal)
-        break
