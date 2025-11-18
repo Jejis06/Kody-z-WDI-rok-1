@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Konfiguracja ---
-SOLVER_NAME="naive_backtrack.py"     # Nazwa Twojego programu
+SOLVER_NAME="ultrafast.py"     # Nazwa Twojego programu
 GENERATOR_NAME="generator.py" # Nazwa generatora
 PYTHON_CMD="python3"
 
@@ -65,6 +65,7 @@ do
         echo -e "${GREEN}PASS${NC} (Czas: ${YELLOW}${DURATION}s${NC})"
         ((PASSED_COUNT++))
         TOTAL_TIME=$(echo "$TOTAL_TIME + $DURATION" | bc)
+	#echo $TEST_INPUT
     else
         echo -e "${RED}FAIL${NC} (Czas: ${DURATION}s)"
         echo "  WEJŚCIE:"

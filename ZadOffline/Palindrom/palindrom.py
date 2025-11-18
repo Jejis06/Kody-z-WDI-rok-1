@@ -34,14 +34,15 @@ def mancher(line_raw: str) -> None:
 
 
 # input
+
 N = int(instr().strip())
+arg1 = int(sys.argv[1])
 
 # odd0[0] == evenOdd[0][1][0]
 # even0[0] == evenOdd[0][0][0]
 
 evenOdd = [[[0 for _ in range(N+1)] for _ in range(2)] for _ in range(6 * N - 18)] 
 grid = [instr().strip() for _ in range(N)]
-
 lines_data: list[str] = []
 
 # data processing
@@ -65,6 +66,7 @@ for k in range(4, 2 * N - 5):
         line.append(grid[r][c])
     lines_data.append("".join(line))
 
+if arg1 == 1: print(lines_data)
 
 # solution 
 for line in lines_data:
@@ -78,13 +80,15 @@ for line in lines_data:
             if l < 5 : continue
 
             pal = line[ i - 1 - evenOdd[arrid][parity][i]  :  i - 1 + evenOdd[arrid][parity][i] + parity]
-            #print(pal, parity)
 
             if pal in occurances: occurances[pal] += 1
             else: occurances[pal] = 1
+            if arg1 == 1: print(pal)
+            #print(pal)
 
             if occurances[pal] == 2:
+                if arg1 == 1: print('out: ', end = '')
                 print(pal)
-                break
+                exit(0)
     arrid += 1
 
