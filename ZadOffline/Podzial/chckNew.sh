@@ -45,10 +45,10 @@ tests_output+=("55")
 tests_points+=("20")
 
 # --- TEST CASE OFF zlosliwy ---
-#tests_name+=("Test OFF 0")
-#tests_input+=("373737373737373737373737373737373737373737373737373737373737373737373737373737373737373737373737373 ")
-#tests_output+=("50") 
-#tests_points+=("0")
+tests_name+=("Test OFF 0")
+tests_input+=("373737373737373737373737373737373737373737373737373737373737373737373737373737373737373737373737373 ")
+tests_output+=("50") 
+tests_points+=("0")
 
 
 
