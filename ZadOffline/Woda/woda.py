@@ -1,40 +1,8 @@
 from math import gcd
 from heapq import heappush as pq_push
 from heapq import heappop as pq_pop
-import time
 
-min_amm = float('inf')
-def recursive_solve(caps:list[int], state:tuple[int,...], step:int, amm:int) -> None:
-    global min_amm
-
-
-    if amm >= min_amm:
-        return
-
-    if 1 in state:
-        min_amm = amm
-        return
-
-    if step >= 8:
-        return
-
-    N = len(caps)
-    for src in range(N):
-        if state[src] == 0:
-            continue
-        for dst in range(N):
-            if src == dst: continue
-
-            space = caps[dst] - state[dst]
-            if space > 0:
-                t_amm = min(space, state[src])
-
-                new_state = list(state)
-                new_state[src] -= t_amm
-                new_state[dst] += t_amm
-                new_state = tuple(new_state)
-
-                recursive_solve(caps, new_state, step+1, amm + t_amm)
+import sys
 
 def fast_sol(caps:list[int]) -> int:
     N = len(caps)
@@ -77,17 +45,16 @@ def fast_sol(caps:list[int]) -> int:
 
 
 def main() -> None:
-    global min_amm
-    N = int(input())
-    sizes = [int(i) for i in input().split(' ')]
+
+
+    raw = sys.stdin.read().split()
+    inp = iter(raw)
+
+    N = int( next(inp) )
+    sizes = [int(next(inp)) for _ in range(N)]
 
     state = [0] * N
     state[0] = sizes[0]
-
-    # Rozwiazanie rekurencyjne DFS
-    recursive_solve(sizes, tuple(state), 0, 0)
-    min_amm = min_amm if min_amm != float('inf') else 'BRAK'
-    print(min_amm)
 
     # Rozwiazanie prawie liniowe DAjkstra
     res = fast_sol(sizes)
