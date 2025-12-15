@@ -43,6 +43,11 @@ def fast_sol(caps:list[int]) -> int:
     return -1
 
 
+def nwd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
 
 def main() -> None:
 
