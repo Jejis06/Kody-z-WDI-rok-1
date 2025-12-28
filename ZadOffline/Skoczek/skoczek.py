@@ -1,7 +1,6 @@
 from sys import stdin
 from collections import deque
 
-
 def bfs_solve(cups:list[int]) -> int | str:
     N = len(cups)
 
@@ -22,6 +21,8 @@ def bfs_solve(cups:list[int]) -> int | str:
         max_range = min(N, curr_pos + 1 + curr_energy)
 
         for pos in range(curr_pos+1, max_range):
+            if cups[pos] == 0 and pos != N-1:
+                continue
             energy_diff = pos - curr_pos
             q.append((curr_cost+1, pos, curr_energy - energy_diff))
 
